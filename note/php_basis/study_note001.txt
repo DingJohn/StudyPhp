@@ -1,0 +1,54 @@
+1.httpd.conf
+	1.ServerRoot：Apache的安装位置
+	2.listen：端口号，Apache的默认端口是80
+	3.ServerAdmin：用于设置管理员邮箱
+	4.DocumentRoot：设置站点的根目录
+		1.Document和ServerName是对应的，当外部通过域名来访问Apache服务器时，Apache会到这个域名对应的DocumentRoot
+			指定的文件中查找文件，找到则返回，未找到则报错
+	5.Directory配置项：主要是用于对站点根目录的特性的配置，配置如下
+		1.DirectoryIndex
+			1.用于设置默认首页，当指定了域名，没有指定具体的文件时，Apache会将此项设置的文件返回给用户
+		2.Options Indexes
+			1.是否列出目录结构，当请求的文件不存在于服务器时会将站点的目录结构显示出来；如果不需要列出则将此行注释即可
+			2.在开发阶段，要么允许列出目录结构，要么设置默认首页
+		3.AllowOverride All 或 none：用于配置是否开启外部配置文件
+		4.Order配置：配置此目录的访问权限
+			1.语法
+				1.Order deny,allow：如果没有明确的拒绝则全部允许
+					1.deny from ip or all
+					2.allow from ip or all
+				2.例子：
+					1.Order deny,allow
+					deny from 222.222.222.222
+					allow from all
+					表示仅拒绝IP为222.222.222.222的客户端访问，其他的允许访问
+			2.语法2
+				1.Order allow,deny：如果没有明确的允许则全部拒绝
+					1.deny from ip or all
+					2.allow from ip or all
+				2.例子：
+					1.Order deny,allow
+					allow from 222.222.222.222
+					deny from all
+					表示仅允许IP为222.222.222.222的客户端访问，其他的拒绝访问
+2.hosts
+	1.配置ip和域名的映射
+		1.语法：222.222.222.222  www.baidu.com
+3.httpd.exe在bin目录下
+	1.主要作用是Apache的维护（重启）
+4.Windows下的cmd命令
+	1.httpd.exe -k stop：停止Apache服务
+	2.httpd.exe -k start：启动Apache服务
+	3.httpd.exe -k restart：重启Apache服务
+	4.httpd.exe -t：配置文件的语法检查
+5.虚拟机的配置
+	1.开启扩展配置文件：默认虚拟主机的配置(httpd-vhosts.conf)没有开启，如果想要配置虚拟主机，需要在主配置文件中开启对扩展配置文件的加载
+	2.在扩展配置文件中配置多个主机（虚拟主机）
+		1.在一台服务器配置多个站点
+6.配置外部配置文件
+	1.在项目目录下创建.htaccess文件，只能通过编辑器创建
+	2.此配置文件的修改不需要重启apache服务器
+	3.自定义错误页面
+		1.ErrorDocument
+			1.语法  ErrorDocument 错误码 页面地址
+7.php的安装
