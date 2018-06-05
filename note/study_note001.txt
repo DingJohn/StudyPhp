@@ -1,7 +1,0 @@
-1.httpd.conf
-	1.ServerRoot：Apache的安装位置
-	2.listen：端口号，Apache的默认端口是80
-	3.ServerAdmin：用于设置管理员邮箱
-	4.DocumentRoot：设置站点的根目录
-		1.Document和ServerName是对应的，当外部通过域名来访问Apache服务器时，Apache会到这个域名对应的DocumentRoot
-			指定的文件中查找文件，找到则返回，未找到则报错
