@@ -1,0 +1,18 @@
+1.continue 1
+	1.表示跳出当前循环指定第一层循环，后面的1如果不写默认为1
+2.流程控制语句中的标签语法
+	1.if
+		1.<?php if(){ > 方法体 <?php }>
+	2.for
+	3.while
+3.文件载入
+	1.在实际开发中，可以在一个文件中引入另一个文件
+	2.语法
+		1.require(文件名)或require_once(文件名)
+		2.include(文件名)或include_once(文件名)
+		3.两者区别
+			1.include引入的文件不存在则会报错，但程序会继续执行，一般引入HTML文件
+			2.require引入的文件不存在则会中断程序的执行，一般引入功能性PHP文件
+		4.require_once和include_once会在引入文件时先检查是否引入过，如未引入则引入，反之不做引入操作
+4.php的错误机制
+	1.https://www.cnblogs.com/yjf512/p/5314345.html
